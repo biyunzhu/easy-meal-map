@@ -1,70 +1,128 @@
-# Getting Started with Create React App
+# Project Title
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+EasyMealMap
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+EasyMealMap is a meal planning tool designed to streamline your meal planning routine and get personalized recommendations.
 
-### `npm start`
+### Problem
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+It is needed to address the common challenges and frustrations people face when planning meals. Many individuals struggle with finding inspiration for meals, managing their time effectively, and accommodating various dietary preferences. EasyMealMap solves these problems by providing a user-friendly interface that offers a wide range of recipes, meal ideas, and customization options.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### User Profile
 
-### `npm test`
+- People who plan for their cooking:
+  - Getting recommendations based on their preferences
+  - Keeping track of their meals
+  - Customize meal plans
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Features
 
-### `npm run build`
+- As a user, I want to be able to get a plan based on my preferences or recommendations
+- As a user, I want to be able to change my meal plans
+- As a user, I want to be able to keep track of my meals
+- As a user, I want to be able to check out recipes (by category)
+- As a user, I want to be able to check out recipe details
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Implementation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React
+- SASS
+- MySQL
+- Express
+- Client libraries
+  - react-router
+  - axios
+  - React DnD
+- Server libraries:
+  - knex
+  - express
 
-### `npm run eject`
+### APIs
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- No external APIs will be used for the first sprint
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Sitemap
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Home page
+- Recipes
+- Meals
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Mockups
 
-## Learn More
+![](EasyMealMap.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Data
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+https://drawsql.app/teams/pen-3/diagrams/easymealmap
 
-### Code Splitting
+### Endpoints
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**GET /recipes**
+**GET /recipes/category/:id**
+**GET /recipes/:id**
 
-### Analyzing the Bundle Size
+**GET /meal-recommendations**
+**GET /meal—recipes**
+**POST /meals/:id**
+**PUT /meals/:id**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Auth
 
-### Making a Progressive Web App
+N/A
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Roadmap
 
-### Advanced Configuration
+- Create repos and git setup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+  - front-end: create-react-app
+  - back-end
 
-### Deployment
+- Research API for recipes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Database setup
 
-### `npm run build` fails to minify
+  - Retrieve recipes and clean sample data from API as seeds
+  - Create a new project and Configure Knex.js
+  - Create Tables
+  - Seeding Data
+  - Querying Data
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Research
+
+  - Drag and Drop library
+
+- Create client
+
+  - react project with routes and boilerplate pages
+
+- Create server
+
+  - express project with routing, with placeholder 200 responses
+
+- Create endpoints for back-end
+
+- Feature: Meals
+
+- Feature: Home page
+
+## Nice-to-haves
+
+- Sync with External data
+  - Notion
+  - Import
+- Today's meal plan
+- Recipe detail
+- Customize meals per day
+- Search recipe
+- Auto save
+- Auto generation rules
+- Regenerate a specific meal
+- Regenerate for a specific meal
+- Auth
+- Add/Edit recipes
+  - **POST /recipes/:id**
+  - **PUT /recipes/:id**
