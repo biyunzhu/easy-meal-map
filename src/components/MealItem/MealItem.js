@@ -1,14 +1,13 @@
 import "./MealItem.scss";
+import MealUnit from "../MealUnit/MealUnit";
 
 function MealItem({ meal }) {
-  const { meal_id, date, type, recipe_id } = meal;
+  const { date } = meal;
   return (
-    <>
-      <p>{meal_id}</p>
-      <p>{date}</p>
-      <p>{type}</p>
-      <p>{recipe_id}</p>
-    </>
+    <section className="meal__item">
+      <p>{date.split("T")[0]}</p>
+      <MealUnit meal={meal} />
+    </section>
   );
 }
 

@@ -38,10 +38,10 @@ function Homepage() {
 
   return (
     <section className="home">
-      <h1>Home page</h1>
+      <h1>Easy Meal Map</h1>
       <section className="board">
-        <RecipeList recipes={recipeList} />
-        <MealList meals={mealList} />
+        <RecipeList recipes={recipeList} className="borad__recipes" />
+        <MealList meals={mealList} className="board__meals" />
       </section>
     </section>
   );
