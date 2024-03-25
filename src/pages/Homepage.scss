@@ -1,0 +1,8 @@
+@use "../styles/partials/mixins" as *;
+
+.home {
+  @include desktop-section-max-width;
+}
+.board {
+  display: flex;
+}

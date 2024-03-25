@@ -1,14 +1,14 @@
 import "./Homepage.scss";
 
 import RecipeList from "../components/RecipeList/RecipeList";
-import RecipeItem from "../components/RecipeItem/RecipeItem";
-import { useState } from "react";
-import { useEffect } from "react";
+import MealList from "../components/MealList/MealList";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { BASE_URL } from "../constant-variables";
 
 function Homepage() {
   const [recipeList, setRecipeList] = useState([]);
+  const [mealList, setMealList] = useState([]);
 
   useEffect(() => {
     const getRecipeList = async () => {
@@ -22,11 +22,28 @@ function Homepage() {
     };
     getRecipeList();
   }, []);
+
+  useEffect(() => {
+    const getMealList = async () => {
+      const mealListData = await axios.get(`${BASE_URL}/meals`);
+      try {
+        setMealList(mealListData.data);
+        // console.log(mealListData.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getMealList();
+  }, []);
+
   return (
-    <>
+    <section className="home">
       <h1>Home page</h1>
-      <RecipeList recipes={recipeList} />
-    </>
+      <section className="board">
+        <RecipeList recipes={recipeList} />
+        <MealList meals={mealList} />
+      </section>
+    </section>
   );
 }
 
