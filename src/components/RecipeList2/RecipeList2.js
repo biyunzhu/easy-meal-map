@@ -74,6 +74,7 @@ function RecipeList2({ DATA }) {
 
     if (type === "group") {
       const reorderedStores = [...stores];
+      console.log(reorderedStores);
 
       const storeSourceIndex = source.index;
       const storeDestinatonIndex = destination.index;
@@ -89,9 +90,12 @@ function RecipeList2({ DATA }) {
     const storeSourceIndex = stores.findIndex(
       (store) => store.id === source.droppableId
     );
+    console.log(storeSourceIndex);
+
     const storeDestinationIndex = stores.findIndex(
       (store) => store.id === destination.droppableId
     );
+    console.log(storeDestinationIndex);
 
     const newSourceItems = [...stores[storeSourceIndex].items];
     const newDestinationItems =
@@ -121,7 +125,7 @@ function RecipeList2({ DATA }) {
       <div className="card">
         <DragDropContext onDragEnd={handleDragAndDrop}>
           <div className="header">
-            <h1>Shopping List</h1>
+            <h1>Recipes</h1>
           </div>
           <Droppable droppableId="ROOT" type="group">
             {(provided) => (

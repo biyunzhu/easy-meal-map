@@ -74,7 +74,7 @@ function Homepage() {
       <section className="board">
         {/* <RecipeList recipes={recipeList} className="borad__recipes" /> */}
         {/* <RecipeList2 recipes2={recipeList} className="borad__recipes" /> */}
-        {/* <RecipeList2 DATA={recipeList} /> */}
+        <RecipeList2 DATA={recipeList} />
         {/* <MealList meals={mealList} className="board__meals" /> */}
         <MealList2 meals={mealList} className="board__meals" />
       </section>
