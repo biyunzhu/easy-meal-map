@@ -25,19 +25,10 @@ function MealList({ meals }) {
         {Object.keys(mealsByDate).map((date) => (
           <div key={date}>
             <p>{date.split("T")[0]}</p>
-            <ul>
-              {mealsByDate[date].map((meal) => (
-                <li key={meal.meal_id}>
-                  {/* Render meal information */}
-                  {/* <div>{`Meal ID: ${meal.meal_id}`}</div> */}
-                  <div>{`Type: ${meal.type}`}</div>
-                  {/* <div>{`Recipe IDs: ${meal.recipe_id}`}</div> */}
-                  {meal.recipe_id.map((id, index) => (
-                    <div key={index}>{id}</div>
-                  ))}
-                </li>
-              ))}
-            </ul>
+
+            {mealsByDate[date].map((meal) => (
+              <MealItem meal={meal} key={meal.meal_id} />
+            ))}
           </div>
         ))}
       </section>
