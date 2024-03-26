@@ -4,9 +4,11 @@ function MealUnit({ meal }) {
   const { meal_id, type, recipe_id: recipes } = meal;
   return (
     <section className="meal__unit">
-      <p>{type}</p>
-      <p>{meal_id}</p>
-      <p>{recipes}</p>
+      <p>type: {type}</p>
+      <p>meal_id: {meal_id}</p>
+      {recipes.map((recipe, index) => (
+        <p key={index}>recipes: {recipe}</p>
+      ))}
     </section>
   );
 }
