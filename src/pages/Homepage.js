@@ -15,29 +15,23 @@ function Homepage() {
 
   useEffect(() => {
     const getRecipeList = async () => {
-      const recipeListData = await axios.get(`${BASE_URL}/recipes`);
       try {
+        const recipeListData = await axios.get(`${BASE_URL}/recipes`);
         setRecipeList(recipeListData.data);
         // console.log(recipeListData.data);
       } catch (error) {
         console.error(error);
-      } finally {
-        setLoading(false); // Set loading state to false regardless of success or failure
       }
     };
     getRecipeList();
-  }, []);
-
-  useEffect(() => {
     const getMealList = async () => {
-      const mealListData = await axios.get(`${BASE_URL}/meals`);
       try {
+        const mealListData = await axios.get(`${BASE_URL}/meals`);
         setMealList(mealListData.data);
+        setLoading(false); // Set loading state to false regardless of success or failure
         // console.log(mealListData.data);
       } catch (error) {
         console.error(error);
-      } finally {
-        setLoading(false); // Set loading state to false regardless of success or failure
       }
     };
     getMealList();

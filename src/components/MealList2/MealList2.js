@@ -20,6 +20,8 @@ function MealList2({ meals }) {
 
   //   console.log(mealsByDate);
   const [mealList, setMealList] = useState(mealsByDate);
+  console.log(mealList);
+  console.log(meals);
 
   const handleDragAndDrop = (results) => {
     const { source, destination, draggableId } = results;
@@ -32,14 +34,81 @@ function MealList2({ meals }) {
 
     // return when draggable is dropped at the same place as before
     if (
-      source.droppableId === destination.droppableId &&
-      source.index === destination.index
+      source.droppableId === destination.droppableId
+      // && source.index === destination.index
     )
       return;
 
+    const recipeToAdd = {
+      recipe_id: draggableId,
+      meal_id: destination.droppableId,
+    };
+    const recipeToRemove = {
+      recipe_id: draggableId,
+      meal_id: source.droppableId,
+    };
+    const sourceMeal = meals.find(
+      // (meal) => meal.meal_id === recipeToRemove.meal_id
+      (meal) => meal.meal_id === Number(source.droppableId)
+    );
+    const destinationMeal = meals.find(
+      (meal) => meal.meal_id === Number(recipeToAdd.meal_id)
+    );
+    console.log("oldMeals: ", meals);
+    const newMeals = meals
+      .filter((meal) => meal.meal_id !== Number(recipeToRemove.meal_id))
+      .filter((meal) => meal.meal_id !== Number(recipeToAdd.meal_id));
+    // console.log("oldMeals after filter: ", meals);
+    console.log("newMeals: ", newMeals);
+    // Safety checks
+    if (!sourceMeal || !destinationMeal) {
+      console.error("Source or destination meal not found.");
+      return;
+    }
+
+    // const newMeals = [...meals];
+
+    // Remove recipeId from sourceMeal
+    const sourceRecipeIndex = sourceMeal.recipe_id.indexOf(
+      Number(recipeToRemove.recipe_id)
+    );
+    console.log(sourceRecipeIndex);
+    if (sourceRecipeIndex > -1) {
+      sourceMeal.recipe_id.splice(sourceRecipeIndex, 1);
+    } else {
+      console.error("Recipe not found in source meal.");
+    }
+
+    // Add recipeId to destinationMeal if not already present
+    if (!destinationMeal.recipe_id.includes(Number(recipeToAdd.recipe_id))) {
+      destinationMeal.recipe_id.push(Number(recipeToAdd.recipe_id));
+    } else {
+      console.error("Recipe already exists in destination meal.");
+    }
+
+    console.log(sourceMeal);
+    console.log(destinationMeal);
+
+    newMeals.push(sourceMeal);
+    newMeals.push(destinationMeal);
+    console.log("newMeals after push: ", newMeals);
+
+    const newMealsByDate = {};
+    newMeals.forEach((meal) => {
+      const dateKey = meal.date; // Extract date without time
+
+      if (!newMealsByDate[dateKey]) {
+        newMealsByDate[dateKey] = [];
+      }
+
+      newMealsByDate[dateKey].push(meal);
+    });
+    setMealList(newMealsByDate);
+    // console.log(typeof source.droppableId);
     // const recipeSourceIndex = source.index;
+    // const sourceMealRecipes = [...mealList];
     // const recipeDestinationIndex = destination.index;
-    // const reorderedMealList = [...mealList];
+    // const [removedRecipe] = reorderedMealList.splice
 
     // const mealSourceIndex = source.droppableId;
 
@@ -48,13 +117,9 @@ function MealList2({ meals }) {
     // const mealForAddedRecipe = destination.droppableId;
 
     const addRcipeToMeal = async () => {
-      const recipeToAdd = {
-        recipe_id: draggableId,
-        meal_id: destination.droppableId,
-      };
       // console.log(recipeToAdd);
-      const response = await axios.post(`${BASE_URL}/meals`, recipeToAdd);
       try {
+        const response = await axios.post(`${BASE_URL}/meals`, recipeToAdd);
         console.log(response.data);
       } catch (error) {
         console.error(error);
@@ -63,16 +128,12 @@ function MealList2({ meals }) {
     addRcipeToMeal();
 
     const removeRcipeFromMeal = async () => {
-      const recipeToRemove = {
-        recipe_id: draggableId,
-        meal_id: source.droppableId,
-      };
       // console.log(recipeToRemove);
 
-      const response = await axios.delete(
-        `${BASE_URL}/meals?meal_id=${recipeToRemove.meal_id}&recipe_id=${recipeToRemove.recipe_id}`
-      );
       try {
+        const response = await axios.delete(
+          `${BASE_URL}/meals?meal_id=${recipeToRemove.meal_id}&recipe_id=${recipeToRemove.recipe_id}`
+        );
         console.log(response.data);
       } catch (error) {
         console.error(error);

@@ -61,7 +61,7 @@ function RecipeList2({ DATA }) {
   const [stores, setStores] = useState(DATA);
 
   const handleDragAndDrop = (results) => {
-    console.log(results);
+    // console.log(results);
     const { source, destination, type } = results;
 
     if (!destination) return;
@@ -80,44 +80,46 @@ function RecipeList2({ DATA }) {
       const storeDestinatonIndex = destination.index;
 
       const [removedStore] = reorderedStores.splice(storeSourceIndex, 1);
+      console.log(removedStore);
       reorderedStores.splice(storeDestinatonIndex, 0, removedStore);
+      console.log(reorderedStores);
 
       return setStores(reorderedStores);
     }
-    const itemSourceIndex = source.index;
-    const itemDestinationIndex = destination.index;
+    // const itemSourceIndex = source.index;
+    // const itemDestinationIndex = destination.index;
 
-    const storeSourceIndex = stores.findIndex(
-      (store) => store.id === source.droppableId
-    );
-    console.log(storeSourceIndex);
+    // const storeSourceIndex = stores.findIndex(
+    //   (store) => store.id === source.droppableId
+    // );
+    // console.log(storeSourceIndex);
 
-    const storeDestinationIndex = stores.findIndex(
-      (store) => store.id === destination.droppableId
-    );
-    console.log(storeDestinationIndex);
+    // const storeDestinationIndex = stores.findIndex(
+    //   (store) => store.id === destination.droppableId
+    // );
+    // console.log(storeDestinationIndex);
 
-    const newSourceItems = [...stores[storeSourceIndex].items];
-    const newDestinationItems =
-      source.droppableId !== destination.droppableId
-        ? [...stores[storeDestinationIndex].items]
-        : newSourceItems;
+    // const newSourceItems = [...stores[storeSourceIndex].items];
+    // const newDestinationItems =
+    //   source.droppableId !== destination.droppableId
+    //     ? [...stores[storeDestinationIndex].items]
+    //     : newSourceItems;
 
-    const [deletedItem] = newSourceItems.splice(itemSourceIndex, 1);
-    newDestinationItems.splice(itemDestinationIndex, 0, deletedItem);
+    // const [deletedItem] = newSourceItems.splice(itemSourceIndex, 1);
+    // newDestinationItems.splice(itemDestinationIndex, 0, deletedItem);
 
-    const newStores = [...stores];
+    // const newStores = [...stores];
 
-    newStores[storeSourceIndex] = {
-      ...stores[storeSourceIndex],
-      items: newSourceItems,
-    };
-    newStores[storeDestinationIndex] = {
-      ...stores[storeDestinationIndex],
-      items: newDestinationItems,
-    };
+    // newStores[storeSourceIndex] = {
+    //   ...stores[storeSourceIndex],
+    //   items: newSourceItems,
+    // };
+    // newStores[storeDestinationIndex] = {
+    //   ...stores[storeDestinationIndex],
+    //   items: newDestinationItems,
+    // };
 
-    setStores(newStores);
+    // setStores(newStores);
   };
 
   return (
