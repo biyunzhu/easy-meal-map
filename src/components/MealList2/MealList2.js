@@ -9,7 +9,7 @@ function MealList2({ meals }) {
   // Group meals by date
   const mealsByDate = {};
   meals.forEach((meal) => {
-    const dateKey = meal.date; // Extract date without time
+    const dateKey = meal.date;
 
     if (!mealsByDate[dateKey]) {
       mealsByDate[dateKey] = [];
@@ -20,8 +20,8 @@ function MealList2({ meals }) {
 
   //   console.log(mealsByDate);
   const [mealList, setMealList] = useState(mealsByDate);
-  console.log(mealList);
-  console.log(meals);
+  // console.log(mealList);
+  // console.log(meals);
 
   const handleDragAndDrop = (results) => {
     const { source, destination, draggableId } = results;
@@ -54,12 +54,12 @@ function MealList2({ meals }) {
     const destinationMeal = meals.find(
       (meal) => meal.meal_id === Number(recipeToAdd.meal_id)
     );
-    console.log("oldMeals: ", meals);
+    // console.log("oldMeals: ", meals);
     const newMeals = meals
       .filter((meal) => meal.meal_id !== Number(recipeToRemove.meal_id))
       .filter((meal) => meal.meal_id !== Number(recipeToAdd.meal_id));
     // console.log("oldMeals after filter: ", meals);
-    console.log("newMeals: ", newMeals);
+    // console.log("newMeals: ", newMeals);
     // Safety checks
     if (!sourceMeal || !destinationMeal) {
       console.error("Source or destination meal not found.");
@@ -72,26 +72,40 @@ function MealList2({ meals }) {
     const sourceRecipeIndex = sourceMeal.recipe_id.indexOf(
       Number(recipeToRemove.recipe_id)
     );
-    console.log(sourceRecipeIndex);
-    if (sourceRecipeIndex > -1) {
-      sourceMeal.recipe_id.splice(sourceRecipeIndex, 1);
-    } else {
-      console.error("Recipe not found in source meal.");
-    }
+
+    const destinationRecipeIndex = destination.index;
+    // console.log("sourceRecipeIndex: ", sourceRecipeIndex);
+    // console.log("destinationRecipeIndex: ", destinationRecipeIndex);
+    // console.log("sourceMeal before splice: ", sourceMeal);
+    // console.log("destinationMeal before splice: ", destinationMeal);
+    const [removedRecipe] = sourceMeal.recipe_id.splice(sourceRecipeIndex, 1);
+    // console.log("removedRecipe :", removedRecipe);
+    // console.log("sourceMeal after splice: ", sourceMeal);
+    // if (sourceRecipeIndex > -1) {
+    // sourceMeal.recipe_id.splice(sourceRecipeIndex, 1);
+    // } else {
+    // console.error("Recipe not found in source meal.");
+    // }
 
     // Add recipeId to destinationMeal if not already present
     if (!destinationMeal.recipe_id.includes(Number(recipeToAdd.recipe_id))) {
-      destinationMeal.recipe_id.push(Number(recipeToAdd.recipe_id));
+      // destinationMeal.recipe_id.push(Number(recipeToAdd.recipe_id));
+      destinationMeal.recipe_id.splice(
+        destinationRecipeIndex,
+        0,
+        removedRecipe
+      );
     } else {
       console.error("Recipe already exists in destination meal.");
     }
+    // console.log("destinationMeal after splice: ", destinationMeal);
 
-    console.log(sourceMeal);
-    console.log(destinationMeal);
+    // console.log(sourceMeal);
+    // console.log(destinationMeal);
 
     newMeals.push(sourceMeal);
     newMeals.push(destinationMeal);
-    console.log("newMeals after push: ", newMeals);
+    // console.log("newMeals after push: ", newMeals);
 
     const newMealsByDate = {};
     newMeals.forEach((meal) => {
@@ -134,7 +148,7 @@ function MealList2({ meals }) {
         const response = await axios.delete(
           `${BASE_URL}/meals?meal_id=${recipeToRemove.meal_id}&recipe_id=${recipeToRemove.recipe_id}`
         );
-        console.log(response.data);
+        console.log("Deleted");
       } catch (error) {
         console.error(error);
       }
