@@ -5,16 +5,14 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import mealsDataFormater from "../../utils/mealsDataFormator";
+import moveRecipeToNewMeal from "../../utils/moveRecipeToNewMeal";
+import findRecipeIdByUUID from "../../utils/findRecipeIdByUuid";
 
 function MealList2({ meals }) {
   console.log(meals);
 
-  // console.log(mealsByDate);
-
-  // console.log(mealsByDate);
   const [mealList, setMealList] = useState({});
-  // console.log(mealList);
-  // console.log(meals);
+
   useEffect(() => {
     if (!!meals) {
       setMealList(mealsDataFormater(meals));
@@ -23,10 +21,6 @@ function MealList2({ meals }) {
 
   const handleDragAndDrop = (results) => {
     const { source, destination, draggableId } = results;
-    // console.log(source);
-    // console.log(destination);
-    console.log(results);
-    console.log(mealList);
 
     // return when draggable is dropped outside of the droppable area
     if (!destination) return;
@@ -38,97 +32,31 @@ function MealList2({ meals }) {
     )
       return;
 
+    // get new data for the changed position of recipe
+    const newMealList = moveRecipeToNewMeal(
+      mealList,
+      Number(source.droppableId),
+      source.index,
+      Number(destination.droppableId),
+      destination.index
+    );
+
+    // update state for the front-end
+    setMealList(newMealList);
+
+    const recipeMoved = findRecipeIdByUUID(mealList, draggableId);
+
+    // data to post for backend
     const recipeToAdd = {
-      recipe_id: draggableId,
+      recipe_id: recipeMoved,
       meal_id: destination.droppableId,
     };
     const recipeToRemove = {
-      recipe_id: draggableId,
+      recipe_id: recipeMoved,
       meal_id: source.droppableId,
     };
-    const sourceMeal = meals.find(
-      // (meal) => meal.meal_id === recipeToRemove.meal_id
-      (meal) => meal.meal_id === Number(source.droppableId)
-    );
-    const destinationMeal = meals.find(
-      (meal) => meal.meal_id === Number(recipeToAdd.meal_id)
-    );
-    // console.log("oldMeals: ", meals);
-    const newMeals = meals
-      .filter((meal) => meal.meal_id !== Number(recipeToRemove.meal_id))
-      .filter((meal) => meal.meal_id !== Number(recipeToAdd.meal_id));
-    // console.log("oldMeals after filter: ", meals);
-    // console.log("newMeals: ", newMeals);
-    // Safety checks
-    if (!sourceMeal || !destinationMeal) {
-      console.error("Source or destination meal not found.");
-      return;
-    }
 
-    // const newMeals = [...meals];
-
-    // Remove recipeId from sourceMeal
-    const sourceRecipeIndex = sourceMeal.recipe_id.indexOf(
-      Number(recipeToRemove.recipe_id)
-    );
-
-    const destinationRecipeIndex = destination.index;
-    // console.log("sourceRecipeIndex: ", sourceRecipeIndex);
-    // console.log("destinationRecipeIndex: ", destinationRecipeIndex);
-    // console.log("sourceMeal before splice: ", sourceMeal);
-    // console.log("destinationMeal before splice: ", destinationMeal);
-    const [removedRecipe] = sourceMeal.recipe_id.splice(sourceRecipeIndex, 1);
-    // console.log("removedRecipe :", removedRecipe);
-    // console.log("sourceMeal after splice: ", sourceMeal);
-    // if (sourceRecipeIndex > -1) {
-    // sourceMeal.recipe_id.splice(sourceRecipeIndex, 1);
-    // } else {
-    // console.error("Recipe not found in source meal.");
-    // }
-
-    // Add recipeId to destinationMeal if not already present
-    if (!destinationMeal.recipe_id.includes(Number(recipeToAdd.recipe_id))) {
-      // destinationMeal.recipe_id.push(Number(recipeToAdd.recipe_id));
-      destinationMeal.recipe_id.splice(
-        destinationRecipeIndex,
-        0,
-        removedRecipe
-      );
-    } else {
-      console.error("Recipe already exists in destination meal.");
-    }
-    // console.log("destinationMeal after splice: ", destinationMeal);
-
-    // console.log(sourceMeal);
-    // console.log(destinationMeal);
-
-    newMeals.push(sourceMeal);
-    newMeals.push(destinationMeal);
-    // console.log("newMeals after push: ", newMeals);
-
-    // const newMealsByDate = {};
-    // newMeals.forEach((meal) => {
-    //   const dateKey = meal.date; // Extract date without time
-
-    //   if (!newMealsByDate[dateKey]) {
-    //     newMealsByDate[dateKey] = [];
-    //   }
-
-    //   newMealsByDate[dateKey].push(meal);
-    // });
-    setMealList(mealsDataFormater(newMeals));
-    // console.log(typeof source.droppableId);
-    // const recipeSourceIndex = source.index;
-    // const sourceMealRecipes = [...mealList];
-    // const recipeDestinationIndex = destination.index;
-    // const [removedRecipe] = reorderedMealList.splice
-
-    // const mealSourceIndex = source.droppableId;
-
-    // const mealDestinationIndex = destination.droppableId;
-
-    // const mealForAddedRecipe = destination.droppableId;
-
+    // Add new meal & recipe pair in database
     const addRcipeToMeal = async () => {
       // console.log(recipeToAdd);
       try {
@@ -140,6 +68,7 @@ function MealList2({ meals }) {
     };
     addRcipeToMeal();
 
+    // Remove old meal & recipe pair from database
     const removeRcipeFromMeal = async () => {
       // console.log(recipeToRemove);
 

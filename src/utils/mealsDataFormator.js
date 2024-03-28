@@ -27,7 +27,7 @@ function mealsDataFormater(meals) {
 
     const transformedRecipes = recipes.map((recipe) => ({
       ...recipe,
-      recipe_uuid: recipe.recipe_uuid || uuid(), // Generate UUID for each recipe
+      recipe_uuid: uuid(), // Generate UUID for each recipe
     }));
 
     mealsByDate[mealDate].push({
