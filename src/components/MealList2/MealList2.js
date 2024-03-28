@@ -13,14 +13,19 @@ function MealList2({ meals }) {
 
   const [mealList, setMealList] = useState({});
 
-  useEffect(() => {
-    if (!!meals) {
-      setMealList(mealsDataFormater(meals));
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!!meals) {
+  //     setMealList(mealsDataFormater(meals));
+  //   }
+  // }, []);
+
+  const handleClick = () => {
+    setMealList(mealsDataFormater(meals));
+  };
 
   const handleDragAndDrop = (results) => {
     const { source, destination, draggableId } = results;
+    console.log(mealList);
 
     // return when draggable is dropped outside of the droppable area
     if (!destination) return;
@@ -86,6 +91,7 @@ function MealList2({ meals }) {
 
   return (
     <DragDropContext onDragEnd={handleDragAndDrop}>
+      <button onClick={handleClick}>Auto generate</button>
       <section className="board">
         {/* Render meals grouped by date */}
         {Object.keys(mealList).map((date) => (
@@ -96,7 +102,7 @@ function MealList2({ meals }) {
                 <Droppable
                   droppableId={`${meal.meal_id}`}
                   type="meal"
-                  key={meal.meal_id}
+                  key={meal.meal_uuid}
                 >
                   {(provided) => (
                     <div {...provided.droppableProps} ref={provided.innerRef}>
