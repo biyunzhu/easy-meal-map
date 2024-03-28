@@ -13,11 +13,11 @@ function MealList2({ meals }) {
 
   const [mealList, setMealList] = useState({});
 
-  // useEffect(() => {
-  //   if (!!meals) {
-  //     setMealList(mealsDataFormater(meals));
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!!meals) {
+      setMealList(mealsDataFormater(meals));
+    }
+  }, []);
 
   const handleClick = () => {
     setMealList(mealsDataFormater(meals));
@@ -90,52 +90,55 @@ function MealList2({ meals }) {
   };
 
   return (
-    <DragDropContext onDragEnd={handleDragAndDrop}>
+    <section>
       <button onClick={handleClick}>Auto generate</button>
-      <section className="board">
-        {/* Render meals grouped by date */}
-        {Object.keys(mealList).map((date) => (
-          <div key={date}>
-            <p>{date.split("T")[0]}</p>
-            <ul>
-              {mealList[date].map((meal) => (
-                <Droppable
-                  droppableId={`${meal.meal_id}`}
-                  type="meal"
-                  key={meal.meal_uuid}
-                >
-                  {(provided) => (
-                    <div {...provided.droppableProps} ref={provided.innerRef}>
-                      <li key={meal.meal_id}>
-                        <div>{meal.type}</div>
-                        {meal.recipes.map((recipe, index) => (
-                          <Draggable
-                            draggableId={`${recipe.recipe_uuid}`}
-                            key={recipe.recipe_uuid}
-                            index={index}
-                          >
-                            {(provided) => (
-                              <div
-                                {...provided.dragHandleProps}
-                                {...provided.draggableProps}
-                                ref={provided.innerRef}
-                              >
-                                {recipe.recipe_id}
-                              </div>
-                            )}
-                          </Draggable>
-                        ))}
-                        {provided.placeholder}
-                      </li>
-                    </div>
-                  )}
-                </Droppable>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </section>
-    </DragDropContext>
+      <DragDropContext onDragEnd={handleDragAndDrop}>
+        <section className="board">
+          {/* Render meals grouped by date */}
+          {Object.keys(mealList).map((date) => (
+            <div key={date}>
+              <p>{date}</p>
+              <ul>
+                {mealList[date].map((meal) => (
+                  <Droppable
+                    droppableId={`${meal.meal_id}`}
+                    type="meal"
+                    key={meal.meal_uuid}
+                  >
+                    {(provided) => (
+                      <div {...provided.droppableProps} ref={provided.innerRef}>
+                        <li key={meal.meal_id}>
+                          <div>{meal.type}</div>
+                          {meal.recipes.map((recipe, index) => (
+                            <Draggable
+                              draggableId={`${recipe.recipe_uuid}`}
+                              key={recipe.recipe_uuid}
+                              index={index}
+                            >
+                              {(provided) => (
+                                <div
+                                  className="recipe"
+                                  {...provided.dragHandleProps}
+                                  {...provided.draggableProps}
+                                  ref={provided.innerRef}
+                                >
+                                  {recipe.recipe_name}
+                                </div>
+                              )}
+                            </Draggable>
+                          ))}
+                          {provided.placeholder}
+                        </li>
+                      </div>
+                    )}
+                  </Droppable>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </section>
+      </DragDropContext>
+    </section>
   );
 }
 
