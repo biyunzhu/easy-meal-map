@@ -9,3 +9,10 @@
   border: 1px dashed grey;
   margin: 0.5rem;
 }
+
+.meal {
+  &__type {
+    position: relative;
+    // top: 1rem;
+  }
+}

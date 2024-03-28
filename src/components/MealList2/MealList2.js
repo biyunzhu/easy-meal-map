@@ -12,15 +12,42 @@ function MealList2({ meals }) {
   console.log(meals);
 
   const [mealList, setMealList] = useState({});
+  // const [generatedMealList, setGeneratedMealList] = useState({});
+  const [buttonStatus, setButtonStatus] = useState(false);
 
   useEffect(() => {
     if (!!meals) {
       setMealList(mealsDataFormater(meals));
     }
   }, []);
+  console.log(buttonStatus);
+  useEffect(() => {}, [buttonStatus]);
 
   const handleClick = () => {
-    setMealList(mealsDataFormater(meals));
+    const autoGenerateMeals = async () => {
+      try {
+        const response = await axios.get(`${BASE_URL}/meals/auto`);
+        setMealList(mealsDataFormater(response.data));
+        setButtonStatus(!buttonStatus);
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    autoGenerateMeals();
+    // const getMealList = async () => {
+    //   try {
+    //     const mealListData = await axios.get(`${BASE_URL}/meals`);
+    //     setMealList(mealsDataFormater(mealListData.data));
+    //     setButtonStatus(!buttonStatus);
+    //     // setMealList(mealListData.data);
+    //     // setLoading(false); // Set loading state to false regardless of success or failure
+    //     // console.log(mealListData.data);
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // };
+    // getMealList();
   };
 
   const handleDragAndDrop = (results) => {
@@ -108,7 +135,7 @@ function MealList2({ meals }) {
                     {(provided) => (
                       <div {...provided.droppableProps} ref={provided.innerRef}>
                         <li key={meal.meal_id}>
-                          <div>{meal.type}</div>
+                          <div className="meal__type">{meal.type}</div>
                           {meal.recipes.map((recipe, index) => (
                             <Draggable
                               draggableId={`${recipe.recipe_uuid}`}
@@ -122,7 +149,7 @@ function MealList2({ meals }) {
                                   {...provided.draggableProps}
                                   ref={provided.innerRef}
                                 >
-                                  {recipe.recipe_name}
+                                  {recipe.recipe_id}
                                 </div>
                               )}
                             </Draggable>

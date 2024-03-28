@@ -104,9 +104,9 @@ function mealsDataFormater(meals) {
       mealsByDate[date] = [];
       for (let type = 1; type <= 3; type++) {
         mealsByDate[date].push({
-          date_uuid: uuid(),
+          meal_uuid: uuid(),
           meal_id: null,
-          date: date,
+          // date: date,
           type: getTypeName(type),
           recipes: [],
         });
