@@ -11,7 +11,7 @@ function moveRecipeToNewMeal(
   // Find the recipe in the source meal
   for (const date in mealsByDate) {
     if (mealsByDate.hasOwnProperty(date)) {
-      const meals = mealsByDate[date];
+      const meals = mealsByDate[date].meals;
       meals.forEach((meal) => {
         if (
           meal.meal_id === sourceMealId &&
@@ -28,7 +28,7 @@ function moveRecipeToNewMeal(
   // Find the destination meal
   for (const date in mealsByDate) {
     if (mealsByDate.hasOwnProperty(date)) {
-      const meals = mealsByDate[date];
+      const meals = mealsByDate[date].meals;
       meals.forEach((meal) => {
         if (meal.meal_id === destinationMealId) {
           destinationMeal = meal;

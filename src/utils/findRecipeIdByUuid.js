@@ -1,7 +1,7 @@
 function findRecipeIdByUUID(mealsByDate, recipeUUID) {
   for (const date in mealsByDate) {
     if (mealsByDate.hasOwnProperty(date)) {
-      const meals = mealsByDate[date];
+      const meals = mealsByDate[date].meals;
       for (const meal of meals) {
         if (meal.recipes) {
           for (const recipe of meal.recipes) {

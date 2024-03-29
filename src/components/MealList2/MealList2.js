@@ -15,12 +15,12 @@ function MealList2({ meals }) {
   // const [generatedMealList, setGeneratedMealList] = useState({});
   const [buttonStatus, setButtonStatus] = useState(false);
 
-  useEffect(() => {
-    if (!!meals) {
-      setMealList(mealsDataFormater(meals));
-    }
-  }, []);
-  console.log(buttonStatus);
+  // useEffect(() => {
+  //   if (!!meals) {
+  //     setMealList(mealsDataFormater(meals));
+  //   }
+  // }, []);
+  // console.log(buttonStatus);
   useEffect(() => {}, [buttonStatus]);
 
   const handleClick = () => {
@@ -125,8 +125,9 @@ function MealList2({ meals }) {
           {Object.keys(mealList).map((date) => (
             <div key={date}>
               <p>{date}</p>
+              <p>{mealList[date].day}</p>
               <ul>
-                {mealList[date].map((meal) => (
+                {mealList[date].meals.map((meal) => (
                   <Droppable
                     droppableId={`${meal.meal_id}`}
                     type="meal"
