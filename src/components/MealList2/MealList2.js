@@ -15,11 +15,11 @@ function MealList2({ meals }) {
   // const [generatedMealList, setGeneratedMealList] = useState({});
   const [buttonStatus, setButtonStatus] = useState(false);
 
-  // useEffect(() => {
-  //   if (!!meals) {
-  //     setMealList(mealsDataFormater(meals));
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!!meals) {
+      setMealList(mealsDataFormater(meals));
+    }
+  }, []);
   // console.log(buttonStatus);
   useEffect(() => {}, [buttonStatus]);
 
@@ -150,7 +150,9 @@ function MealList2({ meals }) {
                                   {...provided.draggableProps}
                                   ref={provided.innerRef}
                                 >
-                                  {recipe.recipe_id}
+                                  <a href={recipe.recipe_url} target="_blank">
+                                    {recipe.recipe_id}
+                                  </a>
                                 </div>
                               )}
                             </Draggable>

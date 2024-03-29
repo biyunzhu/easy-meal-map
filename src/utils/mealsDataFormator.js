@@ -4,7 +4,8 @@ import getDaysStartingFromDate from "./getDaysOfLastWeek";
 
 function mealsDataFormater(meals) {
   const mealsByDate = {};
-  const datesForThisWeek = getDaysStartingFromDate("2024-03-20");
+  // const datesForThisWeek = getDaysStartingFromDate("2024-03-25");
+  const datesForThisWeek = getDaysOfWeekStartingFromMonday();
 
   function getTypeName(type) {
     switch (type) {
