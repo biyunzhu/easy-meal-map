@@ -1,6 +1,27 @@
+@use "../../styles/partials/colors" as *;
+
 .meal {
-  &__unit {
-    border: 1px dashed grey;
-    margin: 1rem;
+  &__type {
+    background-color: $PrimaryColor;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
   }
 }
+
+// .meal {
+//   &__unit {
+//     border: 1px dashed grey;
+//     margin: 1rem;
+//   }
+// }
+
+// .meal {
+//   // &__list {
+//   //   display: flex;
+//   //   flex-wrap: wrap;
+//   // }
+//   &__type {
+//     position: relative;
+//     // top: 1rem;
+//   }
+// }

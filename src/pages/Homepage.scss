@@ -1,12 +1,12 @@
 @use "../styles/partials/mixins" as *;
 
-.board {
+.home {
   @include desktop-section-max-width;
-  display: flex;
+  // display: flex;
   //   flex-wrap: wrap;
-  &__recipes {
-    min-width: 20%;
-  }
+  // &__recipes {
+  //   min-width: 20%;
+  // }
 
   //   &__meals {
   //     width: 80rem;

@@ -1,5 +1,5 @@
-import MealRecipe from "../MealRecipe/MealRecipe";
 import "./MealUnit.scss";
+import MealRecipe from "../MealRecipe/MealRecipe";
 import { Droppable } from "react-beautiful-dnd";
 
 function MealUnit({ meal }) {

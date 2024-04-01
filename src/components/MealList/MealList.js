@@ -1,4 +1,4 @@
-import "./MealList2.scss";
+import "./MealList.scss";
 import { BASE_URL } from "../../constant-variables";
 import { DragDropContext } from "react-beautiful-dnd";
 import { useEffect, useState } from "react";
@@ -8,7 +8,7 @@ import moveRecipeToNewMeal from "../../utils/moveRecipeToNewMeal";
 import findRecipeIdByUUID from "../../utils/findRecipeIdByUuid";
 import MealUnit from "../MealUnit/MealUnit";
 
-function MealList2({ meals }) {
+function MealList({ meals }) {
   console.log(meals);
 
   const [mealList, setMealList] = useState({});
@@ -117,13 +117,16 @@ function MealList2({ meals }) {
   };
 
   return (
-    <section>
-      <button onClick={handleClick}>Auto generate</button>
+    <section className="meal-planner">
+      <h2>This Week</h2>
+      <button onClick={handleClick} className="meal-planner__button">
+        Auto generate
+      </button>
       <DragDropContext onDragEnd={handleDragAndDrop}>
-        <section className="board">
+        <section className="meal__table">
           {/* Render meals grouped by date */}
           {Object.keys(mealList).map((date) => (
-            <div key={date}>
+            <div key={date} className="meal__column">
               <p>{date}</p>
               <p>{mealList[date].day}</p>
               <ul>
@@ -173,7 +176,7 @@ function MealList2({ meals }) {
   );
 }
 
-export default MealList2;
+export default MealList;
 
 //   return (
 //     <section className="meal__list">

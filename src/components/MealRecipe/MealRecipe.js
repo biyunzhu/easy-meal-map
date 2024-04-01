@@ -10,13 +10,13 @@ function MealRecipe({ recipe, index }) {
     >
       {(provided) => (
         <div
-          className="recipe"
+          className="meal__recipe"
           {...provided.dragHandleProps}
           {...provided.draggableProps}
           ref={provided.innerRef}
         >
           <a href={recipe.recipe_url} target="_blank">
-            {recipe.recipe_id}
+            {recipe.recipe_name}
           </a>
         </div>
       )}
