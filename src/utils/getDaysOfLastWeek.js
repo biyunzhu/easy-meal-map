@@ -12,8 +12,3 @@ function getDaysStartingFromDate(startDate) {
 }
 
 export default getDaysStartingFromDate;
-
-// Example usage:
-// const startDate = "2024-03-20";
-// const daysStartingFromDate = getDaysStartingFromDate(startDate);
-// console.log(daysStartingFromDate);

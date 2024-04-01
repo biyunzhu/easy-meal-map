@@ -43,17 +43,6 @@ function moveRecipeToNewMeal(
     destinationMeal.recipes.splice(destinationRecipeIndex, 0, sourceRecipe);
   }
 
-  // // Add recipeId to destinationMeal if not already present
-  // if (!destinationMeal.recipe_id.includes(Number(recipeToAdd.recipe_id))) {
-  //   destinationMeal.recipe_id.splice(
-  //     destinationRecipeIndex,
-  //     0,
-  //     removedRecipe
-  //   );
-  // } else {
-  //   console.error("Recipe already exists in destination meal.");
-  // }
-
   return mealsByDate;
 }
 

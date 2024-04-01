@@ -4,7 +4,6 @@ import "./Header.scss";
 function Header() {
   return (
     <header>
-      {/* <p>Header</p> */}
       <img src={logo} alt="easy meal map logo" className="header__logo" />
     </header>
   );

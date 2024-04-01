@@ -17,7 +17,3 @@ function getDaysOfWeekStartingFromMonday() {
 }
 
 export default getDaysOfWeekStartingFromMonday;
-
-// Example usage:
-// const daysOfWeekStartingFromMonday = getDaysOfWeekStartingFromMonday();
-// console.log(daysOfWeekStartingFromMonday);
