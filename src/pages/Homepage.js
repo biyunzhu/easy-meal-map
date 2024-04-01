@@ -1,11 +1,11 @@
 import "./Homepage.scss";
 import RecipeList from "../components/RecipeList/RecipeList";
 import RecipeList2 from "../components/RecipeList2/RecipeList2";
-import MealList from "../components/MealList/MealList";
 import MealList2 from "../components/MealList2/MealList2";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { BASE_URL } from "../constant-variables";
+import Header from "../components/Header/Header";
 
 function Homepage() {
   const [recipeList, setRecipeList] = useState([]);
@@ -64,6 +64,7 @@ function Homepage() {
 
   return (
     <section className="home">
+      <Header />
       <h1>Easy Meal Map</h1>
       <section className="board">
         {/* <RecipeList recipes={recipeList} className="borad__recipes" /> */}

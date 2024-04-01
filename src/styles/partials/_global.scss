@@ -1,0 +1,21 @@
+@use "./colors" as *;
+
+body {
+  //   font-family: "Lucida Sans", Helvetica, Arial, sans-serif;
+  //   background-color: $PrimaryColor;
+  background-image: url("../../assets/images/background.png");
+  background-size: cover;
+}
+
+p {
+  color: black;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  padding: 0;
+}

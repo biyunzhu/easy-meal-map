@@ -4,7 +4,7 @@ import getDaysStartingFromDate from "./getDaysOfLastWeek";
 
 function mealsDataFormater(meals) {
   const mealsByDate = {};
-  // const datesForThisWeek = getDaysStartingFromDate("2024-03-25");
+  // const datesForThisWeek = getDaysStartingFromDate("2024-03-18");
   const datesForThisWeek = getDaysOfWeekStartingFromMonday();
 
   function getTypeName(type) {
@@ -23,13 +23,13 @@ function mealsDataFormater(meals) {
   // Function to get day name from day number
   function getDayName(dayNumber) {
     const daysOfWeek = [
-      "Sunday",
       "Monday",
       "Tuesday",
       "Wednesday",
       "Thursday",
       "Friday",
       "Saturday",
+      "Sunday",
     ];
     return daysOfWeek[dayNumber];
   }
@@ -45,6 +45,7 @@ function mealsDataFormater(meals) {
       if (!mealsByDate[date]) {
         mealsByDate[date] = {
           // date: new Date(date),
+          date_uuid: uuid(),
           day: dayName,
           meals: [],
         };
@@ -77,6 +78,7 @@ function mealsDataFormater(meals) {
       // If no meals exist for the current date, add placeholders for all types
       const dayName = getDayName(new Date(date).getDay());
       mealsByDate[date] = {
+        date_uuid: uuid(),
         day: dayName,
         meals: [],
       };

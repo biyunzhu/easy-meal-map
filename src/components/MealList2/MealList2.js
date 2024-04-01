@@ -1,12 +1,12 @@
 import "./MealList2.scss";
-import MealItem from "../MealItem2/MealItem2";
 import { BASE_URL } from "../../constant-variables";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { DragDropContext } from "react-beautiful-dnd";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import mealsDataFormater from "../../utils/mealsDataFormator";
 import moveRecipeToNewMeal from "../../utils/moveRecipeToNewMeal";
 import findRecipeIdByUUID from "../../utils/findRecipeIdByUuid";
+import MealUnit from "../MealUnit/MealUnit";
 
 function MealList2({ meals }) {
   console.log(meals);
@@ -128,40 +128,41 @@ function MealList2({ meals }) {
               <p>{mealList[date].day}</p>
               <ul>
                 {mealList[date].meals.map((meal) => (
-                  <Droppable
-                    droppableId={`${meal.meal_id}`}
-                    type="meal"
-                    key={meal.meal_uuid}
-                  >
-                    {(provided) => (
-                      <div {...provided.droppableProps} ref={provided.innerRef}>
-                        <li key={meal.meal_id}>
-                          <div className="meal__type">{meal.type}</div>
-                          {meal.recipes.map((recipe, index) => (
-                            <Draggable
-                              draggableId={`${recipe.recipe_uuid}`}
-                              key={recipe.recipe_uuid}
-                              index={index}
-                            >
-                              {(provided) => (
-                                <div
-                                  className="recipe"
-                                  {...provided.dragHandleProps}
-                                  {...provided.draggableProps}
-                                  ref={provided.innerRef}
-                                >
-                                  <a href={recipe.recipe_url} target="_blank">
-                                    {recipe.recipe_id}
-                                  </a>
-                                </div>
-                              )}
-                            </Draggable>
-                          ))}
-                          {provided.placeholder}
-                        </li>
-                      </div>
-                    )}
-                  </Droppable>
+                  <MealUnit meal={meal} />
+                  // <Droppable
+                  //   droppableId={`${meal.meal_id}`}
+                  //   type="meal"
+                  //   key={meal.meal_uuid}
+                  // >
+                  //   {(provided) => (
+                  //     <div {...provided.droppableProps} ref={provided.innerRef}>
+                  //       <li key={meal.meal_id}>
+                  //         <div className="meal__type">{meal.type}</div>
+                  //         {meal.recipes.map((recipe, index) => (
+                  //           <Draggable
+                  //             draggableId={`${recipe.recipe_uuid}`}
+                  //             key={recipe.recipe_uuid}
+                  //             index={index}
+                  //           >
+                  //             {(provided) => (
+                  //               <div
+                  //                 className="recipe"
+                  //                 {...provided.dragHandleProps}
+                  //                 {...provided.draggableProps}
+                  //                 ref={provided.innerRef}
+                  //               >
+                  //                 <a href={recipe.recipe_url} target="_blank">
+                  //                   {recipe.recipe_id}
+                  //                 </a>
+                  //               </div>
+                  //             )}
+                  //           </Draggable>
+                  //         ))}
+                  //         {provided.placeholder}
+                  //       </li>
+                  //     </div>
+                  //   )}
+                  // </Droppable>
                 ))}
               </ul>
             </div>
