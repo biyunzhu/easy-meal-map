@@ -108,7 +108,13 @@ function MealList({ meals }) {
               <p>{mealList[date].day}</p>
               <ul>
                 {mealList[date].meals.map((meal) => (
-                  <MealUnit meal={meal} />
+                  <MealUnit
+                    meal={meal}
+                    mealList={mealList}
+                    setMealList={setMealList}
+                    buttonStatus={buttonStatus}
+                    setButtonStatus={setButtonStatus}
+                  />
                 ))}
               </ul>
             </div>

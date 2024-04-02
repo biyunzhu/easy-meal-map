@@ -1,6 +1,16 @@
-.meal__recipe {
+.meal-recipe {
   border: 1px dashed grey;
   margin: 0.5rem;
   padding: 0.5rem;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  &__delete {
+    padding-left: 0.5rem;
+    padding-top: 0.25rem;
+    width: 1.5rem;
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }

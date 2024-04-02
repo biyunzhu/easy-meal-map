@@ -36,7 +36,7 @@ It is needed to address the common challenges and frustrations people face when 
 - Client libraries
   - react-router
   - axios
-  - React DnD
+  - React-beautiful-dnd
 - Server libraries:
   - knex
   - express
@@ -48,8 +48,6 @@ It is needed to address the common challenges and frustrations people face when 
 ### Sitemap
 
 - Home page
-- Recipes
-- Meals
 
 ### Mockups
 
@@ -62,13 +60,14 @@ https://drawsql.app/teams/pen-3/diagrams/easymealmap
 ### Endpoints
 
 **GET /recipes**
-**GET /recipes/category/:id**
 **GET /recipes/:id**
 
-**GET /meal-recommendations**
-**GET /meal—recipes**
-**POST /meals/:id**
-**PUT /meals/:id**
+**GET /meals**
+**GET /meals/auto**
+**DELETE /meals?meal_id&recipe_id**
+**POST /meals**
+**GET /meals/id/:id**
+**PUT /meals/id/:id**
 
 ### Auth
 
@@ -107,14 +106,19 @@ N/A
 
 - Feature: Meals
 
-- Feature: Home page
+  - Get Meal list for this week
+  - Edit Meal list
+  - Delete recipe
+
+- Feature: Auto generation
 
 ## Nice-to-haves
 
 - Sync with External data
   - Notion
   - Import
-- Today's meal plan
+- Add recipe
+- Change recipe
 - Recipe detail
 - Customize meals per day
 - Search recipe
@@ -124,5 +128,3 @@ N/A
 - Regenerate for a specific meal
 - Auth
 - Add/Edit recipes
-  - **POST /recipes/:id**
-  - **PUT /recipes/:id**

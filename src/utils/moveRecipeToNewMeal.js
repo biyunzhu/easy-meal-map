@@ -19,7 +19,6 @@ function moveRecipeToNewMeal(
           meal.recipes.length > sourceRecipeIndex
         ) {
           sourceRecipe = meal.recipes.splice(sourceRecipeIndex, 1)[0];
-          console.log(sourceRecipe);
         }
       });
     }
@@ -32,7 +31,6 @@ function moveRecipeToNewMeal(
       meals.forEach((meal) => {
         if (meal.meal_id === destinationMealId) {
           destinationMeal = meal;
-          console.log(destinationMeal);
         }
       });
     }
