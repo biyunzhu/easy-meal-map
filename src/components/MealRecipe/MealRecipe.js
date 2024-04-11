@@ -17,9 +17,6 @@ function MealRecipe({
   setButtonStatus,
 }) {
   const handleChange = () => {
-    // remove recipe from meal
-    // const mealList = removeRcipeFromMealList(mealList, meal_id, index);
-
     // Remove old meal & recipe pair from database
     const removeRcipeFromMeal = async () => {
       try {
@@ -31,12 +28,12 @@ function MealRecipe({
       }
     };
     removeRcipeFromMeal();
-
+    // Add new random recipe to meal
     const addRandomRecipe = async () => {
       try {
         const response = await axios.get(`${BASE_URL}/meals/auto/${meal_id}`);
         const newRecipe = response.data;
-        //
+        // Update meal list
         const newMealList = changeRecipeForMeal(
           mealList,
           meal_id,
@@ -86,16 +83,24 @@ function MealRecipe({
             {recipe.recipe_name}
           </a>
           <div className="meal-recipe__icons">
-            <img
-              src={changeIcon}
-              onClick={handleChange}
-              className="meal-recipe__icon"
-            />
-            <img
-              src={deleteIcon}
-              onClick={handleDelete}
-              className="meal-recipe__icon"
-            />
+            <div className="meal-recipe__item">
+              <img
+                src={changeIcon}
+                alt="change recipe"
+                onClick={handleChange}
+                className="meal-recipe__icon"
+              />
+              <p className="meal-recipe__message">Change recipe</p>
+            </div>
+            <div className="meal-recipe__item">
+              <img
+                src={deleteIcon}
+                alt="delete recipe"
+                onClick={handleDelete}
+                className="meal-recipe__icon"
+              />
+              <p className="meal-recipe__message">Delete recipe</p>
+            </div>
           </div>
         </div>
       )}

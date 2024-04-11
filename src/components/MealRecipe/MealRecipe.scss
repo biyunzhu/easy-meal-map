@@ -1,3 +1,5 @@
+@use "../../styles/partials/colors" as *;
+
 .meal-recipe {
   border: 1px dashed grey;
   margin: 0.5rem;
@@ -15,5 +17,24 @@
     &:hover {
       cursor: pointer;
     }
+  }
+  &__item {
+    position: relative;
+    // display: inline-block;
+  }
+  &__message {
+    display: none;
+    position: absolute;
+    // width: 100%; /* Adjust based on your design */
+    // top: 100%; /* Adjust based on your design */
+    // left: 0;
+    z-index: 1; /* Ensure it's above other content */
+    background-color: $PrimaryColor;
+    color: black; /* Optional, adjust as needed */
+    // text-align: center; /* Optional, for styling */
+    padding: 5px; /* Optional, for styling */
+  }
+  &__item:hover &__message {
+    display: block;
   }
 }
