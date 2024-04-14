@@ -67,11 +67,7 @@ function MealRecipe({
     removeRcipeFromMeal();
   };
   return (
-    <Draggable
-      draggableId={`${recipe.recipe_uuid}`}
-      key={recipe.recipe_uuid}
-      index={index}
-    >
+    <Draggable draggableId={`${recipe.recipe_uuid}`} index={index}>
       {(provided) => (
         <div
           className="meal-recipe"

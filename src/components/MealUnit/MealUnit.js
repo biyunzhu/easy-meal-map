@@ -32,33 +32,32 @@ function MealUnit({
     addRandomRecipe();
   };
   return (
-    <Droppable droppableId={`${meal.meal_id}`} type="meal" key={meal.meal_uuid}>
+    <Droppable droppableId={`${meal.meal_id}`} type="meal">
       {(provided) => (
-        <div {...provided.droppableProps} ref={provided.innerRef}>
-          <li key={meal.meal_id}>
-            <div className="meal__type">{meal.type}</div>
-            {meal.recipes.map((recipe, index) => (
-              <MealRecipe
-                recipe={recipe}
-                index={index}
-                mealList={mealList}
-                meal_id={meal.meal_id}
-                setMealList={setMealList}
-                buttonStatus={buttonStatus}
-                setButtonStatus={setButtonStatus}
-              />
-            ))}
-            {provided.placeholder}
-            <div className="meal-add-recipe" onClick={handleAdd}>
-              <img
-                src={addIcon}
-                alt="generate recipe"
-                className="meal-add-recipe__icon"
-              />
-              <p className="meal-add-recipe__message">Add random recipe</p>
-            </div>
-          </li>
-        </div>
+        <li {...provided.droppableProps} ref={provided.innerRef}>
+          <div className="meal__type">{meal.type}</div>
+          {meal.recipes.map((recipe, index) => (
+            <MealRecipe
+              recipe={recipe}
+              index={index}
+              mealList={mealList}
+              meal_id={meal.meal_id}
+              setMealList={setMealList}
+              buttonStatus={buttonStatus}
+              setButtonStatus={setButtonStatus}
+              key={recipe.recipe_uuid}
+            />
+          ))}
+          {provided.placeholder}
+          <div className="meal-add-recipe" onClick={handleAdd}>
+            <img
+              src={addIcon}
+              alt="generate recipe"
+              className="meal-add-recipe__icon"
+            />
+            <p className="meal-add-recipe__message">Add random recipe</p>
+          </div>
+        </li>
       )}
     </Droppable>
   );

@@ -33,7 +33,6 @@ function MealList() {
       try {
         const response = await axios.get(`${BASE_URL}/meals/auto`);
         setMealList(mealsDataFormater(response.data));
-
         setButtonStatus(!buttonStatus);
       } catch (error) {
         console.error(error);
@@ -120,6 +119,7 @@ function MealList() {
                     setMealList={setMealList}
                     buttonStatus={buttonStatus}
                     setButtonStatus={setButtonStatus}
+                    key={meal.meal_id}
                   />
                 ))}
               </ul>
