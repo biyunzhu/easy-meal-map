@@ -1,4 +1,5 @@
 @use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
 
 .meal {
   &__type {
@@ -12,7 +13,7 @@
   border: 1px dashed grey;
   margin: 0.5rem;
   position: relative;
-  // background-color: floralwhite;
+  // background-color: $SecondaryColor;
 
   &:hover {
     cursor: pointer;
@@ -24,16 +25,7 @@
   }
 
   &__message {
-    display: none;
-    position: absolute;
-    // width: 100%; /* Adjust based on your design */
-    // top: 100%; /* Adjust based on your design */
-    // left: 0;
-    z-index: 1; /* Ensure it's above other content */
-    background-color: $PrimaryColor;
-    color: black; /* Optional, adjust as needed */
-    // text-align: center; /* Optional, for styling */
-    padding: 5px; /* Optional, for styling */
+    @include pop-up-message;
   }
   &:hover &__message {
     display: block;

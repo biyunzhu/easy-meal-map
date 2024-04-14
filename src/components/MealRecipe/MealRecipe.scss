@@ -1,13 +1,18 @@
 @use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
 
 .meal-recipe {
   border: 1px dashed grey;
-  background-color: #fff0d4;
+  background-color: $SecondaryColor;
   margin: 0.5rem;
   padding: 0.5rem;
   text-align: left;
   display: flex;
   flex-direction: column;
+
+  // &__thumbnail {
+  //   width: 4rem;
+  // }
   &__icons {
     display: flex;
   }
@@ -24,16 +29,7 @@
     // display: inline-block;
   }
   &__message {
-    display: none;
-    position: absolute;
-    // width: 100%; /* Adjust based on your design */
-    // top: 100%; /* Adjust based on your design */
-    // left: 0;
-    z-index: 1; /* Ensure it's above other content */
-    background-color: $PrimaryColor;
-    color: black; /* Optional, adjust as needed */
-    // text-align: center; /* Optional, for styling */
-    padding: 5px; /* Optional, for styling */
+    @include pop-up-message;
   }
   &__item:hover &__message {
     display: block;

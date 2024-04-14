@@ -1,4 +1,19 @@
+@use "./colors" as *;
+
 @mixin desktop-section-max-width {
   margin: 0 auto;
   max-width: 1044px;
+}
+
+@mixin pop-up-message {
+  display: none;
+  position: absolute;
+  // width: 100%; /* Adjust based on your design */
+  // top: 100%; /* Adjust based on your design */
+  // left: 0;
+  z-index: 1; /* Ensure it's above other content */
+  background-color: $BackgroundColor;
+  color: $FontColor; /* Optional, adjust as needed */
+  // text-align: center; /* Optional, for styling */
+  padding: 5px; /* Optional, for styling */
 }

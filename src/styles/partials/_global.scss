@@ -2,7 +2,7 @@
 
 body {
   //   font-family: "Lucida Sans", Helvetica, Arial, sans-serif;
-  background-color: #b6c471;
+  background-color: $BackgroundColor;
   background-image: url("../../assets/images/bg-left-bottom.png"),
     url("../../assets/images/bg-right-top.png");
   background-position: bottom -6rem left -15rem, right -6rem top -6rem;
