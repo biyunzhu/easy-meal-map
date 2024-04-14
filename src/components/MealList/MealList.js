@@ -95,7 +95,7 @@ function MealList({ meals }) {
 
   return (
     <section className="meal-planner">
-      <h2 className="meal-planner__title">This Week</h2>
+      <h1 className="meal-planner__title">This Week</h1>
       <button onClick={handleClick} className="meal-planner__button">
         Auto generate
       </button>

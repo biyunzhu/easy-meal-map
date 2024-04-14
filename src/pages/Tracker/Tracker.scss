@@ -1,0 +1,55 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+
+.tracker {
+  @include desktop-section-max-width;
+  min-height: 50rem;
+  &__title {
+    text-align: center;
+  }
+
+  &__table {
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+  }
+  &__header {
+    display: flex;
+    // justify-content: flex-end;
+    width: 87%;
+    // justify-self: flex-end;
+    align-self: flex-end;
+  }
+  &__heading {
+    width: 20rem;
+    // border: 1px dashed grey;
+    background-color: $PrimaryColor;
+    margin: 0.5rem;
+    padding: 0.5rem;
+  }
+}
+
+.meal {
+  &__row {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px dashed $FontColor;
+    // justify-content: stretch;
+    // flex-direction: row
+  }
+  &__date-container {
+    min-width: 13%;
+    // padding-top: 0.5rem;
+  }
+  &__list {
+    display: flex;
+    width: 100%;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__item {
+    // min-width: 29%;
+    flex: 1;
+  }
+}

@@ -1,7 +1,20 @@
+@use "../../styles/partials/colors" as *;
+
 .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   &__logo {
     width: 6rem;
     margin-left: 2rem;
     margin-top: 1rem;
+  }
+}
+
+.nav {
+  margin-right: 10rem;
+  &__link {
+    color: $FontColor;
+    font-weight: 600;
   }
 }
