@@ -8,16 +8,21 @@ import moveRecipeToNewMeal from "../../utils/moveRecipeToNewMeal";
 import findRecipeIdByUUID from "../../utils/findRecipeIdByUuid";
 import MealUnit from "../MealUnit/MealUnit";
 
-function MealList({ meals }) {
+function MealList() {
   const [mealList, setMealList] = useState({});
   // detect button clicks for page re-render
   const [buttonStatus, setButtonStatus] = useState(false);
 
-  // get meals data on mount
   useEffect(() => {
-    if (!!meals) {
-      setMealList(mealsDataFormater(meals));
-    }
+    const getMealList = async () => {
+      try {
+        const reponse = await axios.get(`${BASE_URL}/meals`);
+        setMealList(mealsDataFormater(reponse.data));
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getMealList();
   }, []);
 
   // render page when button is clicked
@@ -28,6 +33,7 @@ function MealList({ meals }) {
       try {
         const response = await axios.get(`${BASE_URL}/meals/auto`);
         setMealList(mealsDataFormater(response.data));
+
         setButtonStatus(!buttonStatus);
       } catch (error) {
         console.error(error);

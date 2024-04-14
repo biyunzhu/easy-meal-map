@@ -1,15 +1,22 @@
 import "./Tracker.scss";
+import axios from "axios";
+import { BASE_URL } from "../../constant-variables";
 import { useEffect, useState } from "react";
-import mealsDataFormater from "../../utils/mealsDataFormator";
+import trackerDataFormater from "../../utils/trackerDataFormator";
 
-function Tracker({ meals }) {
+function Tracker() {
   const [mealList, setMealList] = useState({});
-  // const [buttonStatus, setButtonStatus] = useState(false);
   // get meals data on mount
   useEffect(() => {
-    if (!!meals) {
-      setMealList(mealsDataFormater(meals));
-    }
+    const getMealList = async () => {
+      try {
+        const response = await axios.get(`${BASE_URL}/meals`);
+        setMealList(trackerDataFormater(response.data));
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getMealList();
   }, []);
   return (
     <section className="tracker">
@@ -31,7 +38,7 @@ function Tracker({ meals }) {
               {mealList[date].meals.map((meal) => (
                 <li key={meal.meal_id} className="meal__item">
                   {meal.recipes.map((recipe, index) => (
-                    <div className="meal-recipe" key={recipe.recipe_uuid}>
+                    <div className="meal-recipe" key={index}>
                       <a href={recipe.recipe_url} target="_blank">
                         {recipe.recipe_name}
                       </a>
