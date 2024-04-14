@@ -48,6 +48,7 @@ function MealUnit({
                 setButtonStatus={setButtonStatus}
               />
             ))}
+            {provided.placeholder}
             <div className="meal-add-recipe" onClick={handleAdd}>
               <img
                 src={addIcon}
@@ -56,7 +57,6 @@ function MealUnit({
               />
               <p className="meal-add-recipe__message">Generate recipe</p>
             </div>
-            {provided.placeholder}
           </li>
         </div>
       )}

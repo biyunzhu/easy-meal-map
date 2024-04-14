@@ -104,27 +104,25 @@ N/A
 
 - Create endpoints for back-end
 
-- Feature: Meals
+- Features: Homepage
 
   - Get Meal list for this week
-  - Edit Meal list
+  - Edit Meal list (drag & drop)
+  - Auto save
+  - Auto generation
   - Delete recipe
-
-- Feature: Auto generation
+  - Change recipe
+  - Add recipe
 
 ## Nice-to-haves
 
 - Sync with External data
   - Notion
   - Import
-- Add recipe
-- Change recipe
-- Recipe detail
 - Customize meals per day
-- Search recipe
-- Auto save
 - Auto generation rules
 - Regenerate a specific meal
-- Regenerate for a specific meal
 - Auth
 - Add/Edit recipes
+- Recipe detail
+- Search recipe
