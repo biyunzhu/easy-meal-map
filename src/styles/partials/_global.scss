@@ -1,13 +1,16 @@
 @use "./colors" as *;
+@use "./typography" as *;
 
 body {
-  //   font-family: "Lucida Sans", Helvetica, Arial, sans-serif;
+  font-family: "Mali", Helvetica, Arial, sans-serif;
   background-color: $BackgroundColor;
   background-image: url("../../assets/images/bg-left-bottom.png"),
-    url("../../assets/images/bg-right-top.png");
-  background-position: bottom -6rem left -15rem, right -6rem top -6rem;
-  background-size: 50%, 20%;
-  background-repeat: no-repeat, no-repeat;
+    url("../../assets/images/bg-right-top.png"),
+    url("../../assets/images/bg-right-bottom.png");
+  background-position: bottom -6rem left -15rem, right -6rem top -6rem,
+    right -8rem bottom -3rem;
+  background-size: 50rem, 20rem, 20rem;
+  background-repeat: no-repeat, no-repeat, no-repeat;
 }
 
 p {
@@ -26,8 +29,4 @@ li {
 a {
   text-decoration: none;
   color: $FontColor;
-  //   &:visited {
-  //     color: black;
-  //       text-decoration: none;
-  //   }
 }

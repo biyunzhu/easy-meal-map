@@ -5,15 +5,13 @@
   max-width: 1044px;
 }
 
-@mixin pop-up-message {
+@mixin tooltip {
   display: none;
   position: absolute;
-  // width: 100%; /* Adjust based on your design */
-  // top: 100%; /* Adjust based on your design */
-  // left: 0;
+  border-radius: 6px;
+  width: max-content;
   z-index: 1; /* Ensure it's above other content */
-  background-color: $BackgroundColor;
-  color: $FontColor; /* Optional, adjust as needed */
-  // text-align: center; /* Optional, for styling */
-  padding: 5px; /* Optional, for styling */
+  background-color: $TitleColor;
+  color: white;
+  padding: 0.25rem 0.5rem;
 }

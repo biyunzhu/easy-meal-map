@@ -12,7 +12,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/history" element={<Tracker />} />
+          <Route path="/tracker" element={<Tracker />} />
         </Routes>
         <Footer />
       </BrowserRouter>

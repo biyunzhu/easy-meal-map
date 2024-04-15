@@ -14,7 +14,8 @@
 .nav {
   margin-right: 10rem;
   &__link {
-    color: $FontColor;
+    color: $TitleColor;
     font-weight: 600;
+    margin-left: 2rem;
   }
 }

@@ -2,17 +2,14 @@
 @use "../../styles/partials/mixins" as *;
 
 .meal-recipe {
-  border: 1px dashed grey;
   background-color: $SecondaryColor;
+  border-radius: 6px;
   margin: 0.5rem;
   padding: 0.5rem;
   text-align: left;
   display: flex;
   flex-direction: column;
 
-  // &__thumbnail {
-  //   width: 4rem;
-  // }
   &__icons {
     display: flex;
   }
@@ -24,14 +21,13 @@
       cursor: pointer;
     }
   }
-  &__item {
+  &__tool {
     position: relative;
-    // display: inline-block;
   }
-  &__message {
-    @include pop-up-message;
+  &__tooltip {
+    @include tooltip;
   }
-  &__item:hover &__message {
+  &__tool:hover &__tooltip {
     display: block;
   }
 }

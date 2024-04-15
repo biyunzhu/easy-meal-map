@@ -1,14 +1,9 @@
 import "./Footer.scss";
-import footerImg from "../../assets/images/footer-image.png";
 
 function Footer() {
   return (
     <footer className="footer">
-      <img
-        src={footerImg}
-        alt="be kind to yourself"
-        className="footer__image"
-      />
+      <p className="footer__slogan">BE KIND TO YOURSELF</p>
     </footer>
   );
 }

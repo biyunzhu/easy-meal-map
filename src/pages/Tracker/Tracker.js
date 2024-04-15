@@ -22,7 +22,6 @@ function Tracker() {
     <section className="tracker">
       <h1 className="tracker__title">Meal Tracker</h1>
       <section className="tracker__table">
-        {/* Render meals grouped by date */}
         <div className="tracker__header">
           <p className="tracker__heading">Breakfast</p>
           <p className="tracker__heading">Lunch</p>

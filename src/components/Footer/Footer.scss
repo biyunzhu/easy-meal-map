@@ -1,9 +1,12 @@
+@use "../../styles/partials/colors" as *;
+
 .footer {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  &__image {
-    width: 15rem;
+  &__slogan {
+    font-weight: 500;
+    color: $TitleColor;
   }
 }

@@ -55,7 +55,7 @@ function MealUnit({
               alt="generate recipe"
               className="meal-add-recipe__icon"
             />
-            <p className="meal-add-recipe__message">Add random recipe</p>
+            <p className="meal-add-recipe__tooltip">Add random recipe</p>
           </div>
         </li>
       )}

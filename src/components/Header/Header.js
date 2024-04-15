@@ -9,8 +9,11 @@ function Header() {
         <img src={logo} alt="easy meal map logo" className="header__logo" />
       </Link>
       <nav className="nav">
-        <Link to="/history" className="nav__link">
-          History
+        <Link to="/" className="nav__link">
+          Planner
+        </Link>
+        <Link to="/tracker" className="nav__link">
+          Tracker
         </Link>
       </nav>
     </header>

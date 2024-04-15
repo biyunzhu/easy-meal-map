@@ -13,17 +13,16 @@ It is needed to address the common challenges and frustrations people face when 
 ### User Profile
 
 - People who plan for their cooking:
-  - Getting recommendations based on their preferences
-  - Keeping track of their meals
+  - Getting recommendations (based on their preferences)
   - Customize meal plans
+  - Keeping track of their meals
 
 ### Features
 
-- As a user, I want to be able to get a plan based on my preferences or recommendations
+- As a user, I want to be able to get a meal plan
 - As a user, I want to be able to change my meal plans
 - As a user, I want to be able to keep track of my meals
-- As a user, I want to be able to check out recipes (by category)
-- As a user, I want to be able to check out recipe details
+- As a user, I want to be able to check out recipes
 
 ## Implementation
 
@@ -36,7 +35,7 @@ It is needed to address the common challenges and frustrations people face when 
 - Client libraries
   - react-router
   - axios
-  - React-beautiful-dnd
+  - react-beautiful-dnd
 - Server libraries:
   - knex
   - express
@@ -47,11 +46,13 @@ It is needed to address the common challenges and frustrations people face when 
 
 ### Sitemap
 
-- Home page
+- Planner (Homepage)
+- Tracker
 
 ### Mockups
 
-![](EasyMealMap.png)
+![](Easy-Meal-Map-Planner.png)
+![](Easy-Meal-Map-Tracker.png)
 
 ### Data
 
@@ -59,19 +60,19 @@ https://drawsql.app/teams/pen-3/diagrams/easymealmap
 
 ### Endpoints
 
-**GET /recipes**
-**GET /recipes/:id**
+- **GET /recipes**
+- **GET /recipes/:id**
 
-**GET /meals**
-**GET /meals/auto**
-**DELETE /meals?meal_id&recipe_id**
-**POST /meals**
-**GET /meals/id/:id**
-**PUT /meals/id/:id**
+- **GET /meals**
+- **GET /meals/auto**
+- **DELETE /meals?meal_id&recipe_id**
+- **POST /meals**
+- **GET /meals/id/:id**
+- **PUT /meals/id/:id**
 
 ### Auth
 
-N/A
+- N/A
 
 ## Roadmap
 
@@ -104,7 +105,7 @@ N/A
 
 - Create endpoints for back-end
 
-- Features: Homepage
+- Features: Planner/Homepage
 
   - Get Meal list for this week
   - Edit Meal list (drag & drop)
@@ -114,15 +115,18 @@ N/A
   - Change recipe
   - Add recipe
 
+- Features: Tracker
+  - Meal list
+
 ## Nice-to-haves
 
+- Add specific recipe
+- Search recipe
+- Recipe detail
+- Authentication
+- Auto generation rules
 - Sync with External data
   - Notion
   - Import
+- AI integration: personalized recommendations
 - Customize meals per day
-- Auto generation rules
-- Regenerate a specific meal
-- Auth
-- Add/Edit recipes
-- Recipe detail
-- Search recipe

@@ -4,16 +4,19 @@
 .meal {
   &__type {
     background-color: $PrimaryColor;
+    border-radius: 6px;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
   }
 }
 
 .meal-add-recipe {
   border: 1px dashed grey;
+  border-radius: 6px;
   margin: 0.5rem;
   position: relative;
-  // background-color: $SecondaryColor;
 
   &:hover {
     cursor: pointer;
@@ -24,10 +27,10 @@
     width: 1rem;
   }
 
-  &__message {
-    @include pop-up-message;
+  &__tooltip {
+    @include tooltip;
   }
-  &:hover &__message {
+  &:hover &__tooltip {
     display: block;
   }
 }
