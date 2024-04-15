@@ -1,14 +1,15 @@
-# Project Title
+# Easy Meal Map
 
-EasyMealMap
+![](Easy-Meal-Map-Planner.png)
+![](Easy-Meal-Map-Tracker.png)
 
 ## Overview
 
-EasyMealMap is a meal planning tool designed to streamline your meal planning routine and get personalized recommendations.
+Easy Meal Map is a meal planning tool designed to streamline your meal planning routine and get personalized recommendations.
 
 ### Problem
 
-It is needed to address the common challenges and frustrations people face when planning meals. Many individuals struggle with finding inspiration for meals, managing their time effectively, and accommodating various dietary preferences. EasyMealMap solves these problems by providing a user-friendly interface that offers a wide range of recipes, meal ideas, and customization options.
+It is needed to address the common challenges and frustrations people face when planning meals. Many individuals struggle with finding inspiration for meals, managing their time effectively, and accommodating various dietary preferences. Easy Meal Map solves these problems by providing a user-friendly interface that offers a wide range of recipes, meal ideas, and customization options.
 
 ### User Profile
 
@@ -23,6 +24,14 @@ It is needed to address the common challenges and frustrations people face when 
 - As a user, I want to be able to change my meal plans
 - As a user, I want to be able to keep track of my meals
 - As a user, I want to be able to check out recipes
+
+## Development
+
+1. Clone the git repos
+   - Front-end: https://github.com/biyunzhu/easy-meal-map
+   - Back-end: https://github.com/biyunzhu/easy-meal-map-api
+2. Run npm i to install all dependencies
+3. Run npm start
 
 ## Implementation
 
@@ -48,11 +57,6 @@ It is needed to address the common challenges and frustrations people face when 
 
 - Planner (Homepage)
 - Tracker
-
-### Mockups
-
-![](Easy-Meal-Map-Planner.png)
-![](Easy-Meal-Map-Tracker.png)
 
 ### Data
 
